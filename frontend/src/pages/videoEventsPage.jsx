@@ -29,7 +29,7 @@ export const VideoEventsPage = () => {
             }
         }, 1000);
         return () => clearInterval(timer);
-    }, [isLoaded]);
+    }, [isLoaded, directoryId]);
 
     async function fetchPictures(formData) {
         try {
@@ -58,23 +58,17 @@ export const VideoEventsPage = () => {
     function changeSelectedImg(string) {
         setSelectedImg(string);
     }
-    
+
     return (
         <div className="wrapper">
 
             <div className="content">
-                {'' !== directoryId ? <img className='selectedPicture' src={"http://ltc-gun-detection.ru:3000/video_feed?id=" + directoryId} /> : <img className='selectedPicture' src={streamPlaceHolder} />}
+                {'' !== directoryId ? <img className='selectedPicture' src={"http://ltc-gun-detection.ru:3000/video_feed?id=" + directoryId} alt="Видео поток" /> : <img className='selectedPicture' src={streamPlaceHolder}  alt="placeholder"/>}
                 <UploadFile fetchFile={fetchPictures}></UploadFile>
-                <button className='loadingBtn'
-                    onClick={() => { setIsLoaded(!isLoaded) }}>
-                    {isLoaded ? 'Прекратить подгрузку новых кадров' : 'Продолжить подгрузку новых кадров'}
-
-                </button>
-
-                <img className="selectedImage" src={selectedImg}></img>
+                <img className="selectedImage" src={selectedImg} alt="placeholder"></img>
             </div>
             {items.length ? <ul className="pictureFeed">
-                {items.map(item => <li key={item.id} style={{ listStyleType: 'none' }}> <img onClick={(e) => changeSelectedImg(e.target.src)} className='picture' src={'http://ltc-gun-detection.ru:3000/' + item.url} /></li>)}
+                {items.map(item => <li key={item.id} style={{ listStyleType: 'none' }}> <img onClick={(e) => changeSelectedImg(e.target.src)} className='picture' src={'http://ltc-gun-detection.ru:3000/' + item.url} alt="placeholder" /></li>)}
             </ul>
 
                 : <h1 className="text">Ничего не найдено</h1>
