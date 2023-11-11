@@ -128,8 +128,8 @@ def gen_frames(id):
             frame_count += 1
             try:
                 # Get the boxes and track IDs
-                boxes = results[0].boxes.xywh.cpu()
-                track_ids = results[0].boxes.id.int().cpu().tolist()
+                boxes = results[0].boxes.xywh.cuda()
+                track_ids = results[0].boxes.id.int().cuda().tolist()
 
                 # Visualize the results on the frame
                 annotated_frame = results[0].plot()
