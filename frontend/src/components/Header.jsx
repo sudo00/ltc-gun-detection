@@ -7,7 +7,7 @@ export function Header() {
             <Link className='site-title link' to={'/'}>Команда "Чемпионы" 🏆</Link>
             <ul>
                 <li>
-                    <Link className='link' to={'/videoEventsPage'}>Загрузить видео</Link>
+                    <Link className='link' to={'/'}>Загрузить видео</Link>
                 </li>
             </ul>
         </nav>
