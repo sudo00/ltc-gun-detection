@@ -5,29 +5,21 @@ import placeHolder from "../images/placeHolder.png"
 import streamPlaceHolder from "../images/maxresdefault.jpg"
 
 export const VideoEventsPage = () => {
-    const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([])
     const [selectedImg, setSelectedImg] = useState(placeHolder);
-
     const [directoryId, setDirectoryId] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('http://92.53.64.152:3000/detection-source/get?id=' + directoryId, {
+            const response = await axios.get('http://ltc-gun-detection.ru:3000/detection-source/get?id=' + directoryId, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 }
             });
 
             const dataset = response.data
-            // sort your data in descending order
-            //            dataset.sort(function(a, b) {
-            //                return parseInt(b.id) - parseInt(a.id);
-            //            });  
-
             setItems(dataset);
-            console.log('Fetching data from the server')
         }
 
 
@@ -41,21 +33,13 @@ export const VideoEventsPage = () => {
 
     async function fetchPictures(formData) {
         try {
-            const response = await axios.post('http://92.53.64.152:3000/detection-source/file', formData, {
+            const response = await axios.post('http://ltc-gun-detection.ru:3000/detection-source/file', formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 }
             });
 
-            // const response = await axios.get('http://46.146.228.124/detection-source/get?id=1', formData, {
-            //     headers: {
-            //         "Content-Type": "multipart/form-data",
-            //     }
-            // });
-            console.log(response);
-
             setDirectoryId(response.data.id);
-            console.log(directoryId)
             setIsLoaded(true);
         } catch (error) {
             if (error.response) { // get response with a status code not in range 2xx
@@ -74,11 +58,12 @@ export const VideoEventsPage = () => {
     function changeSelectedImg(string) {
         setSelectedImg(string);
     }
+    
     return (
         <div className="wrapper">
 
             <div className="content">
-                {'' !== directoryId ? <img className='selectedPicture' src={"http://92.53.64.152:3000/video_feed?id=" + directoryId} /> : <img className='selectedPicture' src={streamPlaceHolder} />}
+                {'' !== directoryId ? <img className='selectedPicture' src={"http://ltc-gun-detection.ru:3000/video_feed?id=" + directoryId} /> : <img className='selectedPicture' src={streamPlaceHolder} />}
                 <UploadFile fetchFile={fetchPictures}></UploadFile>
                 <button className='loadingBtn'
                     onClick={() => { setIsLoaded(!isLoaded) }}>
@@ -89,7 +74,7 @@ export const VideoEventsPage = () => {
                 <img className="selectedImage" src={selectedImg}></img>
             </div>
             {items.length ? <ul className="pictureFeed">
-                {items.map(item => <li key={item.id} style={{ listStyleType: 'none' }}> <img onClick={(e) => changeSelectedImg(e.target.src)} className='picture' src={'http://92.53.64.152:3000/' + item.url} /></li>)}
+                {items.map(item => <li key={item.id} style={{ listStyleType: 'none' }}> <img onClick={(e) => changeSelectedImg(e.target.src)} className='picture' src={'http://ltc-gun-detection.ru:3000/' + item.url} /></li>)}
             </ul>
 
                 : <h1 className="text">Ничего не найдено</h1>

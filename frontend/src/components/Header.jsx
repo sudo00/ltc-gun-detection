@@ -9,10 +9,6 @@ export function Header() {
                 <li>
                     <Link className='link' to={'/videoEventsPage'}>Загрузить видео</Link>
                 </li>
-
-                {/* <li>
-                    <Link className='link' to={'/streamEventsPage'}>Загрузить ссылку на видео-поток</Link>
-                </li> */}
             </ul>
         </nav>
     )
