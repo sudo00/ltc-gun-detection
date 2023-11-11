@@ -160,17 +160,17 @@ def gen_frames(id):
                 )
                 cv2.imwrite(output_frames_path, annotated_frame)
                 ret, buffer = cv2.imencode(".jpg", annotated_frame)
-                frame = buffer.tobytes()
+                frameBytes = buffer.tobytes()
                 yield (
-                    b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n"
+                    b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frameBytes + b"\r\n"
                 )
             except AttributeError:
                 # Display the annotated frame
                 out.write(frame)
                 ret, buffer = cv2.imencode(".jpg", frame)
-                frame = buffer.tobytes()
+                frameBytes = buffer.tobytes()
                 yield (
-                    b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n"
+                    b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frameBytes + b"\r\n"
                 )
         else:
             # Break the loop if the end of the video is reached
