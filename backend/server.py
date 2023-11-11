@@ -94,7 +94,7 @@ def video_feed():
 # Нейроночка
 def gen_frames(id):
     # Load the YOLOv8 model
-    model = YOLO("../python/weights/yolol-cctv-1500-1cls.pt")
+    model = YOLO("./weights/yolol-cctv-1500-1cls.pt")
 
     # Open the video file
     video_path = "../files/videos/" + id + ".mp4"
@@ -102,7 +102,6 @@ def gen_frames(id):
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
     frame_fps = int(cap.get(5))
-    frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     # Store the track history
     track_history = defaultdict(lambda: [])
     frame_count = 0  # To count total frames.
