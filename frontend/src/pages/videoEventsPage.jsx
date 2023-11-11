@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react"
 import { UploadFile } from "../components/uploadFile";
 import placeHolder from "../images/placeHolder.png"
+import streamPlaceHolder from "../images/maxresdefault.jpg"
 
 export const VideoEventsPage = () => {
     const [error, setError] = useState(null);
@@ -18,12 +19,12 @@ export const VideoEventsPage = () => {
                     "Content-Type": "multipart/form-data",
                 }
             });
-            
+
             const dataset = response.data
             // sort your data in descending order
-//            dataset.sort(function(a, b) {
-//                return parseInt(b.id) - parseInt(a.id);
-//            });  
+            //            dataset.sort(function(a, b) {
+            //                return parseInt(b.id) - parseInt(a.id);
+            //            });  
 
             setItems(dataset);
             console.log('Fetching data from the server')
@@ -77,13 +78,15 @@ export const VideoEventsPage = () => {
         <div className="wrapper">
 
             <div className="content">
-                {'' !== directoryId ? <img className='imageStream' src={"http://92.53.64.152:3000/video_feed?id=" + directoryId} /> : <img className='selectedPicture' src={selectedImg} />}
+                {'' !== directoryId ? <img className='selectedPicture' src={"http://92.53.64.152:3000/video_feed?id=" + directoryId} /> : <img className='selectedPicture' src={streamPlaceHolder} />}
                 <UploadFile fetchFile={fetchPictures}></UploadFile>
                 <button className='loadingBtn'
                     onClick={() => { setIsLoaded(!isLoaded) }}>
                     {isLoaded ? 'Прекратить подгрузку новых кадров' : 'Продолжить подгрузку новых кадров'}
 
                 </button>
+
+                <img className="selectedImage" src={selectedImg}></img>
             </div>
             {items.length ? <ul className="pictureFeed">
                 {items.map(item => <li key={item.id} style={{ listStyleType: 'none' }}> <img onClick={(e) => changeSelectedImg(e.target.src)} className='picture' src={'http://92.53.64.152:3000/' + item.url} /></li>)}
@@ -91,6 +94,8 @@ export const VideoEventsPage = () => {
 
                 : <h1 className="text">Ничего не найдено</h1>
             }
+            <div style={{ height: '10vh', width: '100vw' }}>
 
+            </div>
         </div >)
 }

@@ -63,7 +63,7 @@ code {
 }
 
 .pictureFeed {
-  height: 600px;
+  height: 900px;
   overflow-y: scroll;
   width: 450px;
   margin-left: auto;
@@ -72,12 +72,13 @@ code {
 
 .wrapper {
   margin: 0 auto;
-  height: 500px;
+  margin-top: 10vh;
   width: 1440px;
   max-width: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .picture {
@@ -108,6 +109,7 @@ code {
 .selectedPicture {
   width: 795px;
   height: 435px;
+  margin-bottom: 2vh;
 }
 
 .text {
@@ -120,7 +122,6 @@ code {
   width: 800px;
   max-width: 95%;
   margin: 0 auto;
-  justify-content: space-between;
 }
 
 
@@ -129,6 +130,7 @@ code {
 .uploadFile {
   display: flex;
   flex-direction: row;
+  margin-bottom: 2vh;
 }
 
 
@@ -140,6 +142,7 @@ code {
 
 .loadingBtn {
   margin: 0;
+  margin-bottom: 2vh;
 }
 
 .homePage {
@@ -174,100 +177,100 @@ code {
 
 .input-file {
 
-	position: relative;
+  position: relative;
 
-	display: inline-block;
+  display: inline-block;
 
 }
 
 .input-file span {
 
-	position: relative;
+  position: relative;
 
-	display: inline-block;
+  display: inline-block;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	outline: none;
+  outline: none;
 
-	text-decoration: none;
+  text-decoration: none;
 
-	font-size: 14px;
+  font-size: 14px;
 
-	vertical-align: middle;
+  vertical-align: middle;
 
-	color: rgb(255 255 255);
+  color: rgb(255 255 255);
 
-	text-align: center;
+  text-align: center;
 
-	border-radius: 4px;
+  border-radius: 4px;
 
-	background-color: #419152;
+  background-color: #419152;
 
-	line-height: 22px;
+  line-height: 22px;
 
-	height: 40px;
+  height: 40px;
 
-	padding: 10px 20px;
+  padding: 10px 20px;
 
-	box-sizing: border-box;
+  box-sizing: border-box;
 
-	border: none;
+  border: none;
 
-	margin: 0;
+  margin: 0;
 
-	transition: background-color 0.2s;
+  transition: background-color 0.2s;
 
 }
 
 .input-file input[type=file] {
 
-	position: absolute;
+  position: absolute;
 
-	z-index: -1;
+  z-index: -1;
 
-	opacity: 0;
+  opacity: 0;
 
-	display: block;
+  display: block;
 
-	width: 0;
+  width: 0;
 
-	height: 0;
+  height: 0;
 
 }
 
- 
+
 
 /* Focus */
 
-.input-file input[type=file]:focus + span {
+.input-file input[type=file]:focus+span {
 
-	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
 
 }
 
- 
+
 
 /* Hover/active */
 
 .input-file:hover span {
 
-	background-color: #59be6e;
+  background-color: #59be6e;
 
 }
 
 .input-file:active span {
 
-	background-color: #2E703A;
+  background-color: #2E703A;
 
 }
 
- 
+
 
 /* Disabled */
 
-.input-file input[type=file]:disabled + span {
+.input-file input[type=file]:disabled+span {
 
-	background-color: #eee;
+  background-color: #eee;
 
 }

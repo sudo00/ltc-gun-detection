@@ -6,7 +6,7 @@ import { Header } from './components/Header';
 
 function App() {
   return (
-    <div style={{ height: '95vh', overflow: 'hidden' }}>
+    <div>
       <Header />
       <div className='container'>
         <Routes>
