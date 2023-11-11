@@ -13,9 +13,6 @@ export function Home() {
                 <li>
                     <button onClick={() => { navigate('/videoEventsPage') }} className='btn'>Загрузка видео</button>
                 </li>
-                <li>
-                    <button onClick={() => { navigate('/streamEventsPage') }} className='btn'>Загрузка ссылки на видео-поток</button>
-                </li>
             </ul>
         </div>
     )
